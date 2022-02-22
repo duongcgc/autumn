@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Emoson Autoload init
@@ -8,7 +7,7 @@
  * @package Emoson
  */
 
- namespace Emoson;
+namespace Emoson;
 
  if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

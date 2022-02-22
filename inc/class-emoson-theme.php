@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Emoson init
@@ -9,6 +8,7 @@
  */
 
 namespace Emoson;
+
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
