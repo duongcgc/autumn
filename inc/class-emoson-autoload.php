@@ -25,10 +25,7 @@ class AutoLoad {
      * @var @instance
      */
     protected static $instance;
-    protected static $class_dir = '/inc/';
-    protected static $theme_prefix = 'emoson';
-    protected static $theme_name = 'Emoson';
-
+    
     /**
      * Initiator
      * 
@@ -50,7 +47,9 @@ class AutoLoad {
      * @return void
      */ 
     public function __construct() {
+
         spl_autoload_register( [ $this, 'load' ] );
+
     }
 
     /**
@@ -61,7 +60,7 @@ class AutoLoad {
      * @return void
      */ 
     public function load( $class ) {
-        if (false === strpos($class, self::$theme_name)) {
+        if (false === strpos($class, \Emoson\Theme::instance()->theme_name)) {
             return;
         }
 
@@ -70,7 +69,7 @@ class AutoLoad {
         $relative_class_name = str_replace('_', '-', $relative_class_name);
         $file_parts          = explode('\\', $relative_class_name);
         $file_name           = $relative_class_name;
-        $file_dir            = get_template_directory() . self::$class_dir;
+        $file_dir            = get_template_directory() . \Emoson\Theme::instance()->class_dir;
         if (count($file_parts) > 1) {
             $i         = 0;
             $file_name = '';
@@ -92,7 +91,7 @@ class AutoLoad {
                 $file_dir .= 'blog/';
             }
         }
-        $file_name = $file_dir . 'class-' . self::$theme_prefix . '-' . $file_name . '.php';
+        $file_name = $file_dir . 'class-' . \Emoson\Theme::instance()->theme_prefix . '-' . $file_name . '.php';
 
         if (is_readable($file_name)) {
             include($file_name);

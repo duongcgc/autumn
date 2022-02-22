@@ -9,11 +9,9 @@
 
 namespace Emoson;
 
-
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
-
 
 /**
  * Emoson theme init
@@ -27,7 +25,11 @@ if (!class_exists('Theme')) {
          *
          * @var $instance
          */
-        protected static $_instance = null;
+        protected static $instance = null;
+        public $theme_prefix = 'emoson';
+        public $theme_name = 'Emoson';
+        public $class_dir = '/inc/';
+
 
         /**
          * Initiator
@@ -36,11 +38,11 @@ if (!class_exists('Theme')) {
          * @return object
          */
         public static function instance() {
-            if (is_null(self::$_instance)) {
-                self::$_instance = new self();
+            if (is_null(self::$instance)) {
+                self::$instance = new self();
             }
 
-            return self::$_instance;
+            return self::$instance;
         }
 
         /** 
@@ -66,7 +68,7 @@ if (!class_exists('Theme')) {
         public function init() {
 
             // Befor init action
-            do_action('emoson/before_init_theme');
+            do_action('emoson_before_init_theme');
 
 
             // Setup
@@ -115,7 +117,7 @@ if (!class_exists('Theme')) {
 
 
             // After init action
-            do_action('emoson/after_init_theme');
+            do_action('emoson_after_init_theme');
         }
 
 
