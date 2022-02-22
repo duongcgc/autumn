@@ -64,8 +64,6 @@ if (!class_exists('Setup')) {
         public function setup_theme() {
 
 
-            protected $editor_font_sizes = array();
-
             /*
             * Make theme available for translation.
             * Translations can be filed in the /languages/ directory.
@@ -178,7 +176,7 @@ if (!class_exists('Setup')) {
             // Add support for editor styles.
             add_theme_support( 'editor-styles' );
             $background_color = get_theme_mod( 'background_color', 'D1E4DD' );
-            if ( 127 > Emoson_Custom_Colors::get_relative_luminance_from_hex( $background_color ) ) {
+            if ( 127 > \Emoson\Custom_Colors::get_relative_luminance_from_hex( $background_color ) ) {
                 add_theme_support( 'dark-editor-style' );
             }
 

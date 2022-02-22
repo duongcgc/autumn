@@ -7,6 +7,12 @@
  * @since Emoson 1.0
  */
 
+namespace Emoson;
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
 /**
  * This class is in charge of displaying SVG icons across the site.
  *
@@ -19,7 +25,28 @@
  *
  * @since Emoson 1.0
  */
-class Emoson_SVG_Icons {
+class SVG_Icons {
+
+	/**
+	 * Instance
+	 *
+	 * @var $instance
+	 */
+	protected static $instance = null;
+
+	/**
+	 * Initiator
+	 *
+	 * @since 1.0.0
+	 * @return object
+	 */
+	public static function instance() {
+		if (is_null(self::$instance)) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 
 	/**
 	 * User Interface icons – svg sources.
