@@ -13,3 +13,7 @@
 if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 }
+
+require_once get_template_directory() . '/inc/class-emoson-theme.php';
+
+\Emoson\Theme::instance()->init();

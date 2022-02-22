@@ -52,6 +52,7 @@ if (!class_exists('Theme')) {
         public function __construct() {
 
             // Auto task code when create object here ...
+            require_once get_template_directory() . '/inc/class-emoson-autoload.php';
 
         }
 
