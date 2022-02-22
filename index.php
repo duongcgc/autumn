@@ -33,7 +33,7 @@ if ( have_posts() ) {
 	}
 
 	// Previous/next page navigation.
-	emoson_the_posts_navigation();
+	//emoson_the_posts_navigation();
 
 } else {
 
