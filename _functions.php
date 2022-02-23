@@ -411,6 +411,7 @@ function emoson_scripts() {
 		wp_get_theme()->get( 'Version' ),
 		true
 	);
+	
 	wp_add_inline_script(
 		'emoson-ie11-polyfills',
 		wp_get_script_polyfill(
