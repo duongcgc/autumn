@@ -64,8 +64,6 @@ if (!class_exists('Widget_Area')) {
       
         public function sidebars_create() {
 
-            echo 'Callback here ...';
-
             register_sidebar(
                 array(
                     'name'          => esc_html__('Footer', 'emoson'),
