@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions and definitions
  *
@@ -10,7 +11,7 @@
  */
 
 // This theme requires WordPress 5.3 or later.
-if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
+if (version_compare($GLOBALS['wp_version'], '5.3', '<')) {
 	require get_template_directory() . '/inc/back-compat.php';
 }
 

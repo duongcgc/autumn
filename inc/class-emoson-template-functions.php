@@ -64,8 +64,6 @@ if (!class_exists('Template_Function')) {
 			add_filter( 'the_title', array ( $this, 'emoson_post_title') );
 			add_filter( 'get_calendar', array ( $this, 'emoson_change_calendar_nav_arrows') );
 			add_filter( 'the_password_form', array ( $this, 'emoson_password_form'), 10, 2 );
-
-
 			
 
         }

@@ -9,7 +9,7 @@
 
 namespace Emoson;
 
- if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
@@ -60,7 +60,7 @@ class AutoLoad {
      * @return void
      */ 
     public function load( $class ) {
-        if (false === strpos($class, \Emoson\Theme::instance()->theme_name)) {
+        if (false === strpos($class, Theme::instance()->theme_name)) {
             return;
         }
 
@@ -69,8 +69,11 @@ class AutoLoad {
         $relative_class_name = str_replace('_', '-', $relative_class_name);
         $file_parts          = explode('\\', $relative_class_name);
         $file_name           = $relative_class_name;
-        $file_dir            = get_template_directory() . \Emoson\Theme::instance()->class_dir;
+
+        $file_dir            = get_template_directory() . Theme::instance()->class_dir;
+
         if (count($file_parts) > 1) {
+
             $i         = 0;
             $file_name = '';
             foreach ($file_parts as $file_part) {
@@ -91,7 +94,8 @@ class AutoLoad {
                 $file_dir .= 'blog/';
             }
         }
-        $file_name = $file_dir . 'class-' . \Emoson\Theme::instance()->theme_prefix . '-' . $file_name . '.php';
+
+        $file_name = $file_dir . 'class-' . Theme::instance()->theme_prefix . '-' . $file_name . '.php';
 
         if (is_readable($file_name)) {
             include($file_name);

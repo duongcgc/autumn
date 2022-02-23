@@ -54,7 +54,7 @@ if (!class_exists('Theme')) {
         public function __construct() {
 
             // Auto task code when create object here ...
-            require_once get_template_directory() . '/inc/class-emoson-autoload.php';
+            require_once get_template_directory() . '/inc/class-' . $this->theme_prefix . '-autoload.php';
 
         }
 
@@ -70,34 +70,30 @@ if (!class_exists('Theme')) {
             // Befor init action
             do_action('emoson_before_init_theme');
 
-
             // Setup
             $this->get('autoload');
             $this->get('setup');
+            $this->get('template_functions');
+            $this->get('starter_content');
+            $this->get('widget_area');
             $this->get('widgets');
-
             $this->get('woocommerce');
-
 
             // Header
             $this->get('preloader');
             $this->get('topbar');
             $this->get('header');            
 
-
             // Page Header
             $this->get('page_header');
             $this->get('breadcrumbs');
-
 
             // Layout & Style
             $this->get('layout');
             $this->get('dynmaic_css');
 
-
             // Comments
             $this->get('comments');
-
 
             // Footer
             $this->get('footer');
@@ -109,12 +105,11 @@ if (!class_exists('Theme')) {
             // Templates
             $this->get('page');
 
-            $this->get('blog');
+            //$this->get('blog');
 
 
             // Admin
-            $this->get('admin');
-
+            $this->get('admin');            
 
             // After init action
             do_action('emoson_after_init_theme');
@@ -143,7 +138,8 @@ if (!class_exists('Theme')) {
 
                 default:
                     $class = ucwords($class);
-                    $class = "\Emoson\\" . $class;
+                    // $class = "\Emoson\\" . $class;
+                    $class = '\\' . $this->theme_name . '\\' . $class;
                     if (class_exists($class)) {
                         return $class::instance();
                     }

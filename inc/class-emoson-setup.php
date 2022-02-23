@@ -63,7 +63,6 @@ if (!class_exists('Setup')) {
          */
         public function setup_theme() {
 
-
             /*
             * Make theme available for translation.
             * Translations can be filed in the /languages/ directory.
@@ -368,9 +367,8 @@ if (!class_exists('Setup')) {
             * This is done conditionally to avoid loading the starter content on every
             * page load, as it is a one-off operation only needed once in the customizer.
             */
-            if ( is_customize_preview() ) {
-                require get_template_directory() . '/inc/starter-content.php';
-                add_theme_support( 'starter-content', emoson_get_starter_content() );
+            if ( is_customize_preview() ) {                
+                add_theme_support( 'starter-content', \Emoson\Starter_Content::get_starter_content() );
             }
 
             // Add support for responsive embedded content.
