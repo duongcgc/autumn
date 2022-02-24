@@ -119,11 +119,11 @@ if (!class_exists('Template_Tag')) {
 
 				$post_format = get_post_format();
 				if ('aside' === $post_format || 'status' === $post_format) {
-					echo '<p><a href="' . esc_url(get_permalink()) . '">' . emoson_continue_reading_text() . '</a></p>'; // phpcs:ignore WordPress.Security.EscapeOutput
+					echo '<p><a href="' . esc_url(get_permalink()) . '">' . Template_Function::instance()->continue_reading_text() . '</a></p>'; // phpcs:ignore WordPress.Security.EscapeOutput
 				}
 
 				// Posted on.
-				emoson_posted_on();
+				$this->posted_on();
 
 				// Edit post link.
 				edit_post_link(
@@ -165,9 +165,9 @@ if (!class_exists('Template_Tag')) {
 
 				echo '<div class="posted-by">';
 				// Posted on.
-				emoson_posted_on();
+				$this->posted_on();
 				// Posted by.
-				emoson_posted_by();
+				$this->posted_by();
 				// Edit post link.
 				edit_post_link(
 					sprintf(
@@ -219,7 +219,7 @@ if (!class_exists('Template_Tag')) {
 		 * @return void
 		 */
 		function post_thumbnail() {
-			if (!can_show_post_thumbnail()) {
+			if ( ! Template_Function::instance()->can_show_post_thumbnail() ) {
 				return;
 			}
 			?>
@@ -265,7 +265,7 @@ if (!class_exists('Template_Tag')) {
 					'mid_size'           => 0,
 					'prev_text'          => sprintf(
 						'%s <span class="nav-prev-text">%s</span>',
-						is_rtl() ? emoson_get_icon_svg('ui', 'arrow_right') : emoson_get_icon_svg('ui', 'arrow_left'),
+						is_rtl() ? Template_Function::instance()->get_icon_svg('ui', 'arrow_right') : Template_Function::instance()->get_icon_svg('ui', 'arrow_left'),
 						wp_kses(
 							__('Newer <span class="nav-short">posts</span>', 'emoson'),
 							array(
@@ -285,7 +285,7 @@ if (!class_exists('Template_Tag')) {
 								),
 							)
 						),
-						is_rtl() ? emoson_get_icon_svg('ui', 'arrow_left') : emoson_get_icon_svg('ui', 'arrow_right')
+						is_rtl() ? Template_Functions::instance()->get_icon_svg('ui', 'arrow_left') : Template_Function::instance()->get_icon_svg('ui', 'arrow_right')
 					),
 				)
 			);

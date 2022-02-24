@@ -179,7 +179,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @return int
 		 */
-		function emoson_get_avatar_size() {
+		function get_avatar_size() {
 			return 60;
 		}
 
@@ -188,7 +188,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @since Emoson 1.0
 		 */
-		function emoson_continue_reading_text() {
+		function continue_reading_text() {
 			$continue_reading = sprintf(
 				/* translators: %s: Name of current post. */
 				esc_html__( 'Continue reading %s', 'emoson' ),
@@ -203,7 +203,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @since Emoson 1.0
 		 */
-		function emoson_continue_reading_link_excerpt() {
+		function continue_reading_link_excerpt() {
 			if ( ! is_admin() ) {
 				return '&hellip; <a class="more-link" href="' . esc_url( get_permalink() ) . '">' . $this->emoson_continue_reading_text() . '</a>';
 			}
@@ -214,7 +214,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @since Emoson 1.0
 		 */
-		function emoson_continue_reading_link() {
+		function continue_reading_link() {
 			if ( ! is_admin() ) {
 				return '<div class="more-link-container"><a class="more-link" href="' . esc_url( get_permalink() ) . '#more-' . esc_attr( get_the_ID() ) . '">' . $this->emoson_continue_reading_text() . '</a></div>';
 			}
@@ -230,7 +230,7 @@ if (!class_exists('Template_Function')) {
 		 * @param string $title The title.
 		 * @return string
 		 */
-		function emoson_post_title( $title ) {
+		function post_title( $title ) {
 			return '' === $title ? esc_html_x( 'Untitled', 'Added to posts and pages that are missing titles', 'emoson' ) : $title;
 		}
 
@@ -244,7 +244,7 @@ if (!class_exists('Template_Function')) {
 		 * @param int    $size  The icon size in pixels.
 		 * @return string
 		 */
-		public static function emoson_get_icon_svg( $group, $icon, $size = 24 ) {
+		public static function get_icon_svg( $group, $icon, $size = 24 ) {
 			return \Emoson\SVG_Icons::instance()->get_svg( $group, $icon, $size );
 		}
 
@@ -256,9 +256,9 @@ if (!class_exists('Template_Function')) {
 		 * @param string $calendar_output The generated HTML of the calendar.
 		 * @return string
 		 */
-		function emoson_change_calendar_nav_arrows( $calendar_output ) {
-			$calendar_output = str_replace( '&laquo; ', is_rtl() ? $this->emoson_get_icon_svg( 'ui', 'arrow_right' ) : $this->emoson_get_icon_svg( 'ui', 'arrow_left' ), $calendar_output );
-			$calendar_output = str_replace( ' &raquo;', is_rtl() ? $this->emoson_get_icon_svg( 'ui', 'arrow_left' ) : $this->emoson_get_icon_svg( 'ui', 'arrow_right' ), $calendar_output );
+		function change_calendar_nav_arrows( $calendar_output ) {
+			$calendar_output = str_replace( '&laquo; ', is_rtl() ? $this->get_icon_svg( 'ui', 'arrow_right' ) : $this->emoson_get_icon_svg( 'ui', 'arrow_left' ), $calendar_output );
+			$calendar_output = str_replace( ' &raquo;', is_rtl() ? $this->get_icon_svg( 'ui', 'arrow_left' ) : $this->emoson_get_icon_svg( 'ui', 'arrow_right' ), $calendar_output );
 			return $calendar_output;
 		}
 
