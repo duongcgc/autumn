@@ -154,16 +154,16 @@ class Footer {
 			echo '</script>';
 		} else {
 			// The following is minified via `npx terser --compress --mangle -- assets/js/skip-link-focus-fix.js`.
-?>
-<script>
-/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window
-    .addEventListener("hashchange", (function() {
-        var t, e = location.hash.substring(1);
-        /^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i
-            .test(t.tagName) || (t.tabIndex = -1), t.focus())
-    }), !1);
-</script>
-<?php
+		?>
+		<script>
+		/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window
+			.addEventListener("hashchange", (function() {
+				var t, e = location.hash.substring(1);
+				/^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i
+					.test(t.tagName) || (t.tabIndex = -1), t.focus())
+			}), !1);
+		</script>
+		<?php
 		}
 	}
 }

@@ -272,7 +272,7 @@ if (!class_exists('Template_Function')) {
 		 * @param string $type Whether to return CSS for the "front-end", "block-editor", or "classic-editor".
 		 * @return string
 		 */
-		function emoson_get_non_latin_css( $type = 'front-end' ) {
+		public static function get_non_latin_css( $type = 'front-end' ) {
 
 			// Fetch site locale.
 			$locale = get_bloginfo( 'language' );
