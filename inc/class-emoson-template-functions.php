@@ -48,22 +48,22 @@ if (!class_exists('Template_Function')) {
         public function __construct() {
 
             // Auto task code when create object here ...
-            add_filter( 'wp_get_attachment_image_attributes', array ( $this, 'emoson_get_attachment_image_attributes'), 10, 3 );
-            add_filter( 'body_class', array ( $this, 'emoson_body_classes'), 10, 3 );
-            add_filter( 'post_class', array ( $this, 'emoson_post_classes'), 10, 3 );
-            add_filter( 'wp_head', array ( $this, 'emoson_pingback_header') );
-            add_filter( 'wp_footer', array ( $this, 'emoson_supports_js') );
-            add_filter( 'comment_form_defaults', array ( $this, 'emoson_comment_form_defaults') );
+            add_filter( 'wp_get_attachment_image_attributes', array ( $this, 'get_attachment_image_attributes'), 10, 3 );
+            add_filter( 'body_class', array ( $this, 'body_classes'), 10, 3 );
+            add_filter( 'post_class', array ( $this, 'post_classes'), 10, 3 );
+            add_filter( 'wp_head', array ( $this, 'pingback_header') );
+            add_filter( 'wp_footer', array ( $this, 'supports_js') );
+            add_filter( 'comment_form_defaults', array ( $this, 'comment_form_defaults') );
 
 			// Filter the excerpt more link.
-            add_filter( 'excerpt_more', array ( $this, 'emoson_continue_reading_link_excerpt') );
+            add_filter( 'excerpt_more', array ( $this, 'continue_reading_link_excerpt') );
 
 			// Filter the excerpt more link.
-			add_filter( 'the_content_more_link', array ( $this, 'emoson_continue_reading_link') );
+			add_filter( 'the_content_more_link', array ( $this, 'continue_reading_link') );
 
-			add_filter( 'the_title', array ( $this, 'emoson_post_title') );
-			add_filter( 'get_calendar', array ( $this, 'emoson_change_calendar_nav_arrows') );
-			add_filter( 'the_password_form', array ( $this, 'emoson_password_form'), 10, 2 );
+			add_filter( 'the_title', array ( $this, 'post_title') );
+			add_filter( 'get_calendar', array ( $this, 'change_calendar_nav_arrows') );
+			add_filter( 'the_password_form', array ( $this, 'password_form'), 10, 2 );
 			
 
         }
@@ -205,7 +205,7 @@ if (!class_exists('Template_Function')) {
 		 */
 		function continue_reading_link_excerpt() {
 			if ( ! is_admin() ) {
-				return '&hellip; <a class="more-link" href="' . esc_url( get_permalink() ) . '">' . $this->emoson_continue_reading_text() . '</a>';
+				return '&hellip; <a class="more-link" href="' . esc_url( get_permalink() ) . '">' . $this->continue_reading_text() . '</a>';
 			}
 		}
 
@@ -216,7 +216,7 @@ if (!class_exists('Template_Function')) {
 		 */
 		function continue_reading_link() {
 			if ( ! is_admin() ) {
-				return '<div class="more-link-container"><a class="more-link" href="' . esc_url( get_permalink() ) . '#more-' . esc_attr( get_the_ID() ) . '">' . $this->emoson_continue_reading_text() . '</a></div>';
+				return '<div class="more-link-container"><a class="more-link" href="' . esc_url( get_permalink() ) . '#more-' . esc_attr( get_the_ID() ) . '">' . $this->continue_reading_text() . '</a></div>';
 			}
 		}
 
@@ -257,8 +257,8 @@ if (!class_exists('Template_Function')) {
 		 * @return string
 		 */
 		function change_calendar_nav_arrows( $calendar_output ) {
-			$calendar_output = str_replace( '&laquo; ', is_rtl() ? $this->get_icon_svg( 'ui', 'arrow_right' ) : $this->emoson_get_icon_svg( 'ui', 'arrow_left' ), $calendar_output );
-			$calendar_output = str_replace( ' &raquo;', is_rtl() ? $this->get_icon_svg( 'ui', 'arrow_left' ) : $this->emoson_get_icon_svg( 'ui', 'arrow_right' ), $calendar_output );
+			$calendar_output = str_replace( '&laquo; ', is_rtl() ? $this->get_icon_svg( 'ui', 'arrow_right' ) : $this->get_icon_svg( 'ui', 'arrow_left' ), $calendar_output );
+			$calendar_output = str_replace( ' &raquo;', is_rtl() ? $this->get_icon_svg( 'ui', 'arrow_left' ) : $this->get_icon_svg( 'ui', 'arrow_right' ), $calendar_output );
 			return $calendar_output;
 		}
 
