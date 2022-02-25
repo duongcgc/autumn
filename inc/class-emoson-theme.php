@@ -74,6 +74,7 @@ if (!class_exists('Theme')) {
             $this->get('autoload');
             $this->get('setup');
             $this->get('template_functions');
+            $this->get('template_tags');
             $this->get('starter_content');
             $this->get('widget_area');
             $this->get('widgets');
