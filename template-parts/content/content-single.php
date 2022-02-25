@@ -15,7 +15,7 @@
 
 	<header class="entry-header alignwide">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<?php emoson_post_thumbnail(); ?>
+		<?php Emoson\Template_Tag::instance()->post_thumbnail(); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -34,7 +34,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer default-max-width">
-		<?php emoson_entry_meta_footer(); ?>
+		<?php Emoson\Template_Tag::instance()->entry_meta_footer(); ?>
 	</footer><!-- .entry-footer -->
 
 	<?php if ( ! is_singular( 'attachment' ) ) : ?>

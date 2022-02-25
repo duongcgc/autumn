@@ -76,7 +76,7 @@ if (!class_exists('Template_Function')) {
 		 * @param array $classes Classes for the body element.
 		 * @return array
 		 */
-		function emoson_body_classes( $classes ) {
+		function body_classes( $classes ) {
 
 			// Helps detect if JS is enabled or not.
 			$classes[] = 'no-js';
@@ -105,7 +105,7 @@ if (!class_exists('Template_Function')) {
 		 * @param array $classes An array of CSS classes.
 		 * @return array
 		 */
-		function emoson_post_classes( $classes ) {
+		function post_classes( $classes ) {
 			$classes[] = 'entry';
 
 			return $classes;
@@ -118,7 +118,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @return void
 		 */
-		function emoson_pingback_header() {
+		function pingback_header() {
 			if ( is_singular() && pings_open() ) {
 				echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 			}
@@ -131,7 +131,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @return void
 		 */
-		function emoson_supports_js() {
+		function supports_js() {
 			echo '<script>document.body.classList.remove("no-js");</script>';
 		}
 
@@ -143,7 +143,7 @@ if (!class_exists('Template_Function')) {
 		 * @param array $defaults The form defaults.
 		 * @return array
 		 */
-		function emoson_comment_form_defaults( $defaults ) {
+		function comment_form_defaults( $defaults ) {
 
 			// Adjust height of comment form.
 			$defaults['comment_field'] = preg_replace( '/rows="\d+"/', 'rows="5"', $defaults['comment_field'] );
@@ -158,7 +158,7 @@ if (!class_exists('Template_Function')) {
 		 *
 		 * @return bool
 		 */
-		function emoson_can_show_post_thumbnail() {
+		function can_show_post_thumbnail() {
 			/**
 			 * Filters whether post thumbnail can be displayed.
 			 *
@@ -401,7 +401,7 @@ if (!class_exists('Template_Function')) {
 		 * @param int         $instances  How many instances of the block will be printed (max). Default  1.
 		 * @return bool Returns true if a block was located & printed, otherwise false.
 		 */
-		function emoson_print_first_instance_of_block( $block_name, $content = null, $instances = 1 ) {
+		function print_first_instance_of_block( $block_name, $content = null, $instances = 1 ) {
 			$instances_count = 0;
 			$blocks_content  = '';
 
@@ -464,7 +464,7 @@ if (!class_exists('Template_Function')) {
 		 * @param int|WP_Post $post   Optional. Post ID or WP_Post object. Default is global $post.
 		 * @return string HTML content for password form for password protected post.
 		 */
-		function emoson_password_form( $output, $post = 0 ) {
+		function password_form( $output, $post = 0 ) {
 			$post   = get_post( $post );
 			$label  = 'pwbox-' . ( empty( $post->ID ) ? wp_rand() : $post->ID );
 			$output = '<p class="post-password-message">' . esc_html__( 'This content is password protected. Please enter a password to view.', 'emoson' ) . '</p>
@@ -486,7 +486,7 @@ if (!class_exists('Template_Function')) {
 		 *                                 an array of width and height values in pixels (in that order).
 		 * @return string[] The filtered attributes for the image markup.
 		 */
-		function emoson_get_attachment_image_attributes( $attr, $attachment, $size ) {
+		function get_attachment_image_attributes( $attr, $attachment, $size ) {
 
 			if ( is_admin() ) {
 				return $attr;

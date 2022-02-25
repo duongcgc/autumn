@@ -19,13 +19,13 @@
 			<?php the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 		<?php endif; ?>
 
-		<?php emoson_post_thumbnail(); ?>
+		<?php Emoson\Template_Tag::instance()->post_thumbnail(); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
 		the_content(
-			emoson_continue_reading_text()
+			Emoson\Template_Function::instance()->continue_reading_text()
 		);
 
 		wp_link_pages(
@@ -41,6 +41,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer default-max-width">
-		<?php emoson_entry_meta_footer(); ?>
+		<?php Emoson\Template_Tag::instance()->entry_meta_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
